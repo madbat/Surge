@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D26964ED1C646AD800F456D4 /* Convolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26964EC1C646AD800F456D4 /* Convolution.swift */; };
+		D26964F01C646C8D00F456D4 /* ConvolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26964EE1C646C8800F456D4 /* ConvolutionTests.swift */; };
 		E65C5BE419FF9CF600149FF1 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65C5BE319FF9CF600149FF1 /* Matrix.swift */; };
 		F8A1E1CB19917B0A009735E2 /* Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E1C419917B0A009735E2 /* Arithmetic.swift */; };
 		F8A1E1CC19917B0A009735E2 /* Auxiliary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E1C519917B0A009735E2 /* Auxiliary.swift */; };
@@ -19,7 +21,6 @@
 		F8A1E1D719917C2B009735E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A1E1D619917C2B009735E2 /* Foundation.framework */; };
 		F8AE90FE19D1D9120078C7B2 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE90FD19D1D9120078C7B2 /* FFT.swift */; };
 		F8BD5C591A6C1C6500DD357E /* ArithmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD5C531A6C1C6500DD357E /* ArithmeticTests.swift */; };
-		F8BD5C5A1A6C1C6500DD357E /* AuxiliaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD5C541A6C1C6500DD357E /* AuxiliaryTests.swift */; };
 		F8BD5C5B1A6C1C6500DD357E /* ExponentialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD5C551A6C1C6500DD357E /* ExponentialTests.swift */; };
 		F8BD5C5C1A6C1C6500DD357E /* HyperbolicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD5C561A6C1C6500DD357E /* HyperbolicTests.swift */; };
 		F8BD5C5D1A6C1C6500DD357E /* TrigonometricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD5C571A6C1C6500DD357E /* TrigonometricTests.swift */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D26964EC1C646AD800F456D4 /* Convolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convolution.swift; sourceTree = "<group>"; };
+		D26964EE1C646C8800F456D4 /* ConvolutionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvolutionTests.swift; sourceTree = "<group>"; };
 		E65C5BE319FF9CF600149FF1 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		F84A6AAE19A9A72F007B53E1 /* SurgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F84A6AB119A9A72F007B53E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			children = (
 				F8BD5C531A6C1C6500DD357E /* ArithmeticTests.swift */,
 				F8BD5C541A6C1C6500DD357E /* AuxiliaryTests.swift */,
+				D26964EE1C646C8800F456D4 /* ConvolutionTests.swift */,
 				F8BD5C551A6C1C6500DD357E /* ExponentialTests.swift */,
 				F8BD5C561A6C1C6500DD357E /* HyperbolicTests.swift */,
 				F8BD5C571A6C1C6500DD357E /* TrigonometricTests.swift */,
@@ -146,6 +150,7 @@
 			children = (
 				F8A1E1C919917B0A009735E2 /* Surge.h */,
 				F8A1E1C419917B0A009735E2 /* Arithmetic.swift */,
+				D26964EC1C646AD800F456D4 /* Convolution.swift */,
 				F8A1E1C519917B0A009735E2 /* Auxiliary.swift */,
 				F8A1E1C619917B0A009735E2 /* Exponential.swift */,
 				F8AE90FD19D1D9120078C7B2 /* FFT.swift */,
@@ -223,7 +228,9 @@
 		F8A1E1A119917A79009735E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Mattt Thompson";
 				TargetAttributes = {
 					F84A6AAD19A9A72F007B53E1 = {
@@ -275,9 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8BD5C5C1A6C1C6500DD357E /* HyperbolicTests.swift in Sources */,
-				F8BD5C5A1A6C1C6500DD357E /* AuxiliaryTests.swift in Sources */,
 				F8BD5C5D1A6C1C6500DD357E /* TrigonometricTests.swift in Sources */,
 				F8BD5C5E1A6C1C6500DD357E /* XCTestCase+Surge.swift in Sources */,
+				D26964F01C646C8D00F456D4 /* ConvolutionTests.swift in Sources */,
 				F8BD5C591A6C1C6500DD357E /* ArithmeticTests.swift in Sources */,
 				F8BD5C5B1A6C1C6500DD357E /* ExponentialTests.swift in Sources */,
 			);
@@ -295,6 +302,7 @@
 				F8AE90FE19D1D9120078C7B2 /* FFT.swift in Sources */,
 				F8A1E1CD19917B0A009735E2 /* Exponential.swift in Sources */,
 				F8A1E1CB19917B0A009735E2 /* Arithmetic.swift in Sources */,
+				D26964ED1C646AD800F456D4 /* Convolution.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +331,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/SurgeTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -339,6 +348,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/SurgeTests-Bridging-Header.h";
 			};
@@ -365,6 +375,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -439,6 +450,7 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -454,6 +466,7 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
