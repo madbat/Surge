@@ -290,10 +290,13 @@ public func inv(_ x : Matrix<Float>) -> Matrix<Float> {
     var lwork = __CLPK_integer(x.columns * x.columns)
     var work = [CFloat](repeating: 0.0, count: Int(lwork))
     var error: __CLPK_integer = 0
+    var nr = __CLPK_integer(x.rows)
     var nc = __CLPK_integer(x.columns)
+    var lda = nr
+    var order = nr
 
-    sgetrf_(&nc, &nc, &(results.grid), &nc, &ipiv, &error)
-    sgetri_(&nc, &(results.grid), &nc, &ipiv, &work, &lwork, &error)
+    sgetrf_(&nr, &nc, &(results.grid), &lda, &ipiv, &error)
+    sgetri_(&order, &(results.grid), &lda, &ipiv, &work, &lwork, &error)
 
     assert(error == 0, "Matrix not invertible")
 
@@ -309,10 +312,13 @@ public func inv(_ x : Matrix<Double>) -> Matrix<Double> {
     var lwork = __CLPK_integer(x.columns * x.columns)
     var work = [CDouble](repeating: 0.0, count: Int(lwork))
     var error: __CLPK_integer = 0
+    var nr = __CLPK_integer(x.rows)
     var nc = __CLPK_integer(x.columns)
+    var lda = nr
+    var order = nr
 
-    dgetrf_(&nc, &nc, &(results.grid), &nc, &ipiv, &error)
-    dgetri_(&nc, &(results.grid), &nc, &ipiv, &work, &lwork, &error)
+    dgetrf_(&nr, &nc, &(results.grid), &lda, &ipiv, &error)
+    dgetri_(&order, &(results.grid), &lda, &ipiv, &work, &lwork, &error)
 
     assert(error == 0, "Matrix not invertible")
 
