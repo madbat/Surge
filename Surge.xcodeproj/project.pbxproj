@@ -88,7 +88,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F84A6AAF19A9A72F007B53E1 /* Tests */ = {
+		A65546861F02C6CF00D9ADAA /* SurgeTests */ = {
 			isa = PBXGroup;
 			children = (
 				B897D7421C70507F00989C26 /* MatrixTests.swift */,
@@ -100,6 +100,14 @@
 				F8BD5C561A6C1C6500DD357E /* HyperbolicTests.swift */,
 				F8BD5C571A6C1C6500DD357E /* TrigonometricTests.swift */,
 				F8BD5C581A6C1C6500DD357E /* XCTestCase+Surge.swift */,
+			);
+			path = SurgeTests;
+			sourceTree = "<group>";
+		};
+		F84A6AAF19A9A72F007B53E1 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A65546861F02C6CF00D9ADAA /* SurgeTests */,
 				F84A6AB019A9A72F007B53E1 /* Supporting Files */,
 				F8BD5C521A6C1C6400DD357E /* SurgeTests-Bridging-Header.h */,
 			);
@@ -117,7 +125,8 @@
 		F8A1E1A019917A79009735E2 = {
 			isa = PBXGroup;
 			children = (
-				F8A1E1AC19917A79009735E2 /* Source */,
+				F8A1E1AC19917A79009735E2 /* Sources */,
+				F8A1E1AD19917A79009735E2 /* Supporting Files */,
 				F84A6AAF19A9A72F007B53E1 /* Tests */,
 				F8A1E1D419917C17009735E2 /* Frameworks */,
 				F8A1E1AB19917A79009735E2 /* Products */,
@@ -133,25 +142,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F8A1E1AC19917A79009735E2 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				F8A1E1C319917B0A009735E2 /* Source */,
-				F8A1E1AD19917A79009735E2 /* Supporting Files */,
-			);
-			name = Source;
-			path = Surge;
-			sourceTree = "<group>";
-		};
-		F8A1E1AD19917A79009735E2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F8A1E1AE19917A79009735E2 /* Info.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F8A1E1C319917B0A009735E2 /* Source */ = {
+		F8A1E1AC19917A79009735E2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				F8A1E1C919917B0A009735E2 /* Surge.h */,
@@ -165,8 +156,16 @@
 				F8A1E1C819917B0A009735E2 /* Power.swift */,
 				F8A1E1CA19917B0A009735E2 /* Trigonometric.swift */,
 			);
-			path = Source;
-			sourceTree = SOURCE_ROOT;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		F8A1E1AD19917A79009735E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8A1E1AE19917A79009735E2 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
 		};
 		F8A1E1D419917C17009735E2 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -175,7 +174,6 @@
 				F8A1E1D219917C0B009735E2 /* Accelerate.framework */,
 			);
 			name = Frameworks;
-			path = "Surge/Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
