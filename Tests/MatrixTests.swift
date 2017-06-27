@@ -25,12 +25,12 @@ class MatrixTests: XCTestCase {
     
     func testSetRow() {
         matrix[row: 0] = [13.0, 14.0, 15.0, 16.0]
-        XCTAssertTrue(matrix==Matrix<Double>([[13,14,15,16],[5,6,7,8], [9, 10, 11, 12]]))
+        XCTAssertTrue(matrix==Matrix<Double>([[13,14,15,16], [5,6,7,8], [9, 10, 11, 12]]))
     }
     
     func testSetColumn() {
         matrix[column: 0] = [20,30,40]
-        XCTAssertEqual(matrix, Matrix<Double>([[20,2,3,4],[30,6,7,8], [40, 10, 11, 12]]))
+        XCTAssertEqual(matrix, Matrix<Double>([[20,2,3,4], [30,6,7,8], [40, 10, 11, 12]]))
     }
     
     func testMatrixPower() {
