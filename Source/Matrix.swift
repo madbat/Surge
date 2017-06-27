@@ -137,19 +137,19 @@ extension Matrix: CustomStringConvertible {
 // MARK: - SequenceType
 
 extension Matrix: Sequence {
-    public func makeIterator() -> AnyIterator<ArraySlice<Element>> {
+    public func makeIterator() -> AnyIterator<Element> {
         let endIndex = rows * columns
-        var nextRowStartIndex = 0
+        var index = 0
 
         return AnyIterator {
-            if nextRowStartIndex == endIndex {
+            if index == endIndex {
                 return nil
             }
 
-            let currentRowStartIndex = nextRowStartIndex
-            nextRowStartIndex += self.columns
+            let currentIndex = index
+            index += 1
 
-            return self.grid[currentRowStartIndex..<nextRowStartIndex]
+            return self.grid[currentIndex]
         }
     }
 }
