@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A65546891F02D5BE00D9ADAA /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		B897D7421C70507F00989C26 /* MatrixTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixTests.swift; sourceTree = "<group>"; };
 		B897D7441C7053AF00989C26 /* PowerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerTests.swift; sourceTree = "<group>"; };
 		D26964EC1C646AD800F456D4 /* Convolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convolution.swift; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		F8A1E1A019917A79009735E2 = {
 			isa = PBXGroup;
 			children = (
+				A65546891F02D5BE00D9ADAA /* Package.swift */,
 				F8A1E1AC19917A79009735E2 /* Sources */,
 				F8A1E1AD19917A79009735E2 /* Supporting Files */,
 				F84A6AAF19A9A72F007B53E1 /* Tests */,
