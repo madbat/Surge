@@ -22,162 +22,167 @@
 
 import Accelerate
 
-// MARK: Absolute Value
+extension Array where Element == Float {
+    /// Absolute Value
+    public func abs() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvfabsf(&results, self, [Int32(count)])
 
-public func abs(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvfabs(&results, x, [Int32(x.count)])
+        return results
+    }
 
-    return results
+    /// Ceiling
+    public func ceil() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvceilf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Clip
+    public func clip(low: Element, high: Element) -> [Element] {
+        var results = [Element](repeating: 0.0, count: count), y = low, z = high
+        vDSP_vclip(self, 1, &y, &z, &results, 1, vDSP_Length(count))
+
+        return results
+    }
+
+    /// Copy Sign
+    public func copysign(_ sign: [Element], magnitude: [Element]) -> [Element] {
+        var results = [Element](repeating: 0.0, count: sign.count)
+        vvcopysignf(&results, magnitude, sign, [Int32(sign.count)])
+
+        return results
+    }
+
+    /// Floor
+    public func floor() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvfloorf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Negate
+    public func neg() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vDSP_vneg(self, 1, &results, 1, vDSP_Length(count))
+
+        return results
+    }
+
+    /// Reciprocal
+    public func rec() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvrecf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Round
+    public func round() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvnintf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Threshold
+    public func threshold(low: Element) -> [Element] {
+        var results = [Element](repeating: 0.0, count: count), y = low
+        vDSP_vthr(self, 1, &y, &results, 1, vDSP_Length(count))
+
+        return results
+    }
+
+    /// Truncate
+    public func trunc() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvintf(&results, self, [Int32(count)])
+
+        return results
+    }
 }
 
-public func abs(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvfabsf(&results, x, [Int32(x.count)])
 
-    return results
-}
+extension Array where Element == Double {
+    /// Absolute Value
+    public func abs() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvfabs(&results, self, [Int32(count)])
 
-// MARK: Ceiling
+        return results
+    }
 
-public func ceil(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvceilf(&results, x, [Int32(x.count)])
+    /// Ceiling
+    public func ceil() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvceil(&results, self, [Int32(count)])
 
-    return results
-}
+        return results
+    }
 
-public func ceil(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvceil(&results, x, [Int32(x.count)])
+    /// Clip
+    public func clip(low: Element, high: Element) -> [Element] {
+        var results = [Element](repeating: 0.0, count: count), y = low, z = high
+        vDSP_vclipD(self, 1, &y, &z, &results, 1, vDSP_Length(count))
 
-    return results
-}
+        return results
+    }
 
-// MARK: Clip
+    /// Copy Sign
+    public func copysign(_ magnitude: [Element]) -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvcopysign(&results, magnitude, self, [Int32(count)])
 
-public func clip(_ x: [Float], low: Float, high: Float) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count), y = low, z = high
-    vDSP_vclip(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
+        return results
+    }
 
-    return results
-}
+    /// Floor
+    public func floor() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvfloor(&results, self, [Int32(count)])
 
-public func clip(_ x: [Double], low: Double, high: Double) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count), y = low, z = high
-    vDSP_vclipD(x, 1, &y, &z, &results, 1, vDSP_Length(x.count))
+        return results
+    }
 
-    return results
-}
+    /// Negate
+    public func neg() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vDSP_vnegD(self, 1, &results, 1, vDSP_Length(count))
 
-// MARK: Copy Sign
+        return results
+    }
 
-public func copysign(_ sign: [Float], magnitude: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: sign.count)
-    vvcopysignf(&results, magnitude, sign, [Int32(sign.count)])
+    /// Reciprocal
+    public func rec() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvrec(&results, self, [Int32(count)])
 
-    return results
-}
+        return results
+    }
 
-public func copysign(_ sign: [Double], magnitude: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: sign.count)
-    vvcopysign(&results, magnitude, sign, [Int32(sign.count)])
+    /// Round
+    public func round() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvnint(&results, self, [Int32(count)])
 
-    return results
-}
+        return results
+    }
 
-// MARK: Floor
+    /// Threshold
+    public func threshold(low: Element) -> [Element] {
+        var results = [Element](repeating: 0.0, count: count), y = low
+        vDSP_vthrD(self, 1, &y, &results, 1, vDSP_Length(count))
 
-public func floor(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvfloorf(&results, x, [Int32(x.count)])
+        return results
+    }
 
-    return results
-}
+    /// Truncate
+    public func trunc() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvint(&results, self, [Int32(count)])
 
-public func floor(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvfloor(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-// MARK: Negate
-
-public func neg(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vDSP_vneg(x, 1, &results, 1, vDSP_Length(x.count))
-
-    return results
-}
-
-public func neg(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vDSP_vnegD(x, 1, &results, 1, vDSP_Length(x.count))
-
-    return results
-}
-
-// MARK: Reciprocal
-
-public func rec(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvrecf(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func rec(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvrec(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-// MARK: Round
-
-public func round(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvnintf(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func round(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvnint(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-// MARK: Threshold
-
-public func threshold(_ x: [Float], low: Float) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count), y = low
-    vDSP_vthr(x, 1, &y, &results, 1, vDSP_Length(x.count))
-
-    return results
-}
-
-public func threshold(_ x: [Double], low: Double) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count), y = low
-    vDSP_vthrD(x, 1, &y, &results, 1, vDSP_Length(x.count))
-
-    return results
-}
-
-// MARK: Truncate
-
-public func trunc(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvintf(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func trunc(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvint(&results, x, [Int32(x.count)])
-
-    return results
+        return results
+    }
 }

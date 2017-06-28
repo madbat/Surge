@@ -22,98 +22,107 @@
 
 import Accelerate
 
-// MARK: Exponentiation
+// MARK: - Array of Floats
 
-public func exp(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvexpf(&results, x, [Int32(x.count)])
+extension Array where Element == Float {
+    /// Exponentiation
+    public func exp() -> [Element] {
+        var results = self
+        vvexpf(&results, self, [Int32(count)])
 
-    return results
+        return results
+    }
+
+    /// Square Exponentiation
+    public func exp2() -> [Element] {
+        var results = self
+        vvexp2f(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Natural Logarithm
+    public func log() -> [Element] {
+        var results = self
+        vvlogf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Base-2 Logarithm
+    public func log2() -> [Element] {
+        var results = self
+        vvlog2f(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Base-10 Logarithm
+    public func log10() -> [Element] {
+        var results = self
+        vvlog10f(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Logarithmic Exponentiation
+    public func logb() -> [Element] {
+        var results = self
+        vvlogbf(&results, self, [Int32(count)])
+
+        return results
+    }
 }
 
-public func exp(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvexp(&results, x, [Int32(x.count)])
 
-    return results
-}
+// MARK: - Array of Doubles
 
-// MARK: Square Exponentiation
+extension Array where Element == Double {
+    /// Exponentiation
+    public func exp() -> [Element] {
+        var results = self
+        vvexp(&results, self, [Int32(count)])
 
-public func exp2(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvexp2f(&results, x, [Int32(x.count)])
+        return results
+    }
 
-    return results
-}
+    /// Square Exponentiation
+    public func exp2() -> [Element] {
+        var results = self
+        vvexp2(&results, self, [Int32(count)])
 
-public func exp2(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvexp2(&results, x, [Int32(x.count)])
+        return results
+    }
 
-    return results
-}
+    /// Natural Logarithm
+    public func log() -> [Element] {
+        var results = self
+        vvlog(&results, self, [Int32(count)])
 
-// MARK: Natural Logarithm
+        return results
+    }
 
-public func log(_ x: [Float]) -> [Float] {
-    var results = [Float](x)
-    vvlogf(&results, x, [Int32(x.count)])
+    /// Base-2 Logarithm
+    public func log2() -> [Element] {
+        var results = self
+        vvlog2(&results, self, [Int32(count)])
 
-    return results
-}
+        return results
+    }
 
-public func log(_ x: [Double]) -> [Double] {
-    var results = [Double](x)
-    vvlog(&results, x, [Int32(x.count)])
+    /// Base-10 Logarithm
+    public func log10() -> [Element] {
+        var results = self
+        vvlog10(&results, self, [Int32(count)])
 
-    return results
-}
+        return results
+    }
 
-// MARK: Base-2 Logarithm
+    /// Logarithmic Exponentiation
+    public func logb() -> [Element] {
+        var results = self
+        vvlogb(&results, self, [Int32(count)])
 
-public func log2(_ x: [Float]) -> [Float] {
-    var results = [Float](x)
-    vvlog2f(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func log2(_ x: [Double]) -> [Double] {
-    var results = [Double](x)
-    vvlog2(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-// MARK: Base-10 Logarithm
-
-public func log10(_ x: [Float]) -> [Float] {
-    var results = [Float](x)
-    vvlog10f(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func log10(_ x: [Double]) -> [Double] {
-    var results = [Double](x)
-    vvlog10(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-// MARK: Logarithmic Exponentiation
-
-public func logb(_ x: [Float]) -> [Float] {
-    var results = [Float](x)
-    vvlogbf(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func logb(_ x: [Double]) -> [Double] {
-    var results = [Double](x)
-    vvlogb(&results, x, [Int32(x.count)])
-
-    return results
+        return results
+    }
 }

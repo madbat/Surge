@@ -14,7 +14,7 @@ class PowerTests: XCTestCase {
     let vector = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
     
     func testPower() {
-        let powered = pow(vector, 2.0)
+        let powered = vector.pow(2.0)
         XCTAssertEqual(powered, [1.0, 4.0, 9.0, 16.0, 25.0, 36.0])
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A623E8AA1F0464F400154AFD /* Uncurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A623E8A81F04649900154AFD /* Uncurry.swift */; };
+		A623E8AB1F04685400154AFD /* AuxiliaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD5C541A6C1C6500DD357E /* AuxiliaryTests.swift */; };
 		B897D7431C70507F00989C26 /* MatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B897D7421C70507F00989C26 /* MatrixTests.swift */; };
 		B897D7451C7053AF00989C26 /* PowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B897D7441C7053AF00989C26 /* PowerTests.swift */; };
 		D26964ED1C646AD800F456D4 /* Convolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26964EC1C646AD800F456D4 /* Convolution.swift */; };
@@ -40,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A623E8A81F04649900154AFD /* Uncurry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uncurry.swift; sourceTree = "<group>"; };
 		A65546891F02D5BE00D9ADAA /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		B897D7421C70507F00989C26 /* MatrixTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixTests.swift; sourceTree = "<group>"; };
 		B897D7441C7053AF00989C26 /* PowerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerTests.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 				F8BD5C561A6C1C6500DD357E /* HyperbolicTests.swift */,
 				F8BD5C571A6C1C6500DD357E /* TrigonometricTests.swift */,
 				F8BD5C581A6C1C6500DD357E /* XCTestCase+Surge.swift */,
+				A623E8A81F04649900154AFD /* Uncurry.swift */,
 			);
 			path = SurgeTests;
 			sourceTree = "<group>";
@@ -298,6 +302,8 @@
 				D26964F01C646C8D00F456D4 /* ConvolutionTests.swift in Sources */,
 				F8BD5C591A6C1C6500DD357E /* ArithmeticTests.swift in Sources */,
 				F8BD5C5B1A6C1C6500DD357E /* ExponentialTests.swift in Sources */,
+				A623E8AB1F04685400154AFD /* AuxiliaryTests.swift in Sources */,
+				A623E8AA1F0464F400154AFD /* Uncurry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

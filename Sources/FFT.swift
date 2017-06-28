@@ -24,44 +24,48 @@ import Accelerate
 
 // MARK: Fast Fourier Transform
 
-public func fft(_ input: [Float]) -> [Float] {
-    var real = [Float](input)
-    var imaginary = [Float](repeating: 0.0, count: input.count)
-    var splitComplex = DSPSplitComplex(realp: &real, imagp: &imaginary)
+extension Array where Element == Float {
+    public func fft() -> [Element] {
+        var real = self
+        var imaginary = [Element](repeating: 0.0, count: count)
+        var splitComplex = DSPSplitComplex(realp: &real, imagp: &imaginary)
 
-    let length = vDSP_Length(floor(log2(Float(input.count))))
-    let radix = FFTRadix(kFFTRadix2)
-    let weights = vDSP_create_fftsetup(length, radix)
-    vDSP_fft_zip(weights!, &splitComplex, 1, length, FFTDirection(FFT_FORWARD))
+        let length = vDSP_Length(Darwin.floor(Darwin.log2(Element(count))))
+        let radix = FFTRadix(kFFTRadix2)
+        let weights = vDSP_create_fftsetup(length, radix)
+        vDSP_fft_zip(weights!, &splitComplex, 1, length, FFTDirection(FFT_FORWARD))
 
-    var magnitudes = [Float](repeating: 0.0, count: input.count)
-    vDSP_zvmags(&splitComplex, 1, &magnitudes, 1, vDSP_Length(input.count))
+        var magnitudes = [Element](repeating: 0.0, count: count)
+        vDSP_zvmags(&splitComplex, 1, &magnitudes, 1, vDSP_Length(count))
 
-    var normalizedMagnitudes = [Float](repeating: 0.0, count: input.count)
-    vDSP_vsmul(sqrt(magnitudes), 1, [2.0 / Float(input.count)], &normalizedMagnitudes, 1, vDSP_Length(input.count))
+        var normalizedMagnitudes = [Element](repeating: 0.0, count: count)
+        vDSP_vsmul(magnitudes.sqrt(), 1, [2.0 / Element(count)], &normalizedMagnitudes, 1, vDSP_Length(count))
 
-    vDSP_destroy_fftsetup(weights)
+        vDSP_destroy_fftsetup(weights)
 
-    return normalizedMagnitudes
+        return normalizedMagnitudes
+    }
 }
 
-public func fft(_ input: [Double]) -> [Double] {
-    var real = [Double](input)
-    var imaginary = [Double](repeating: 0.0, count: input.count)
-    var splitComplex = DSPDoubleSplitComplex(realp: &real, imagp: &imaginary)
+extension Array where Element == Double {
+    public func fft() -> [Element] {
+        var real = self
+        var imaginary = [Element](repeating: 0.0, count: count)
+        var splitComplex = DSPDoubleSplitComplex(realp: &real, imagp: &imaginary)
 
-    let length = vDSP_Length(floor(log2(Float(input.count))))
-    let radix = FFTRadix(kFFTRadix2)
-    let weights = vDSP_create_fftsetupD(length, radix)
-    vDSP_fft_zipD(weights!, &splitComplex, 1, length, FFTDirection(FFT_FORWARD))
+        let length = vDSP_Length(Darwin.floor(Darwin.log2(Element(count))))
+        let radix = FFTRadix(kFFTRadix2)
+        let weights = vDSP_create_fftsetupD(length, radix)
+        vDSP_fft_zipD(weights!, &splitComplex, 1, length, FFTDirection(FFT_FORWARD))
 
-    var magnitudes = [Double](repeating: 0.0, count: input.count)
-    vDSP_zvmagsD(&splitComplex, 1, &magnitudes, 1, vDSP_Length(input.count))
+        var magnitudes = [Element](repeating: 0.0, count: count)
+        vDSP_zvmagsD(&splitComplex, 1, &magnitudes, 1, vDSP_Length(count))
 
-    var normalizedMagnitudes = [Double](repeating: 0.0, count: input.count)
-    vDSP_vsmulD(sqrt(magnitudes), 1, [2.0 / Double(input.count)], &normalizedMagnitudes, 1, vDSP_Length(input.count))
+        var normalizedMagnitudes = [Element](repeating: 0.0, count: count)
+        vDSP_vsmulD(magnitudes.sqrt(), 1, [2.0 / Element(count)], &normalizedMagnitudes, 1, vDSP_Length(count))
 
-    vDSP_destroy_fftsetupD(weights)
+        vDSP_destroy_fftsetupD(weights)
 
-    return normalizedMagnitudes
+        return normalizedMagnitudes
+    }
 }

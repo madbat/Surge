@@ -24,26 +24,30 @@ import Accelerate
 
 // MARK: Power
 
-public func pow(_ x: [Float], y: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvpowf(&results, x, y, [Int32(x.count)])
+extension Array where Element == Float {
+    public static func pow(_ x: [Element], _ y: [Element]) -> [Element] {
+        var results = [Element](repeating: 0.0, count: x.count)
+        vvpowf(&results, x, y, [Int32(x.count)])
 
-    return results
+        return results
+    }
+
+    public func pow(_ y: Element) -> [Element] {
+        let yVec = [Element](repeating: y, count: count)
+        return .pow(yVec, self)
+    }
 }
 
-public func pow(_ x: [Double], y: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvpow(&results, x, y, [Int32(x.count)])
+extension Array where Element == Double {
+    public static func pow(_ x: [Element], _ y: [Element]) -> [Element] {
+        var results = [Element](repeating: 0.0, count: x.count)
+        vvpow(&results, x, y, [Int32(x.count)])
 
-    return results
-}
+        return results
+    }
 
-public func pow(_ x: [Float], _ y: Float) -> [Float] {
-    let yVec = [Float](repeating: y, count: x.count)
-    return pow(yVec, y: x)
-}
-
-public func pow(_ x: [Double], _ y: Double) -> [Double] {
-    let yVec = [Double](repeating: y, count: x.count)
-    return pow(yVec, y: x)
+    public func pow(_ y: Element) -> [Element] {
+        let yVec = [Element](repeating: y, count: count)
+        return .pow(yVec, self)
+    }
 }

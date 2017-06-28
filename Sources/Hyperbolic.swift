@@ -22,98 +22,102 @@
 
 import Accelerate
 
-// MARK: Hyperbolic Sine
+extension Array where Element == Float {
+    /// Hyperbolic Sine
+    public func sinh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvsinhf(&results, self, [Int32(count)])
 
-public func sinh(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvsinhf(&results, x, [Int32(x.count)])
+        return results
+    }
 
-    return results
+    /// Hyperbolic Cosine
+    public func cosh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvcoshf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Hyperbolic Tangent
+    public func tanh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvtanhf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Inverse Hyperbolic Sine
+    public func asinh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvasinhf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Inverse Hyperbolic Cosine
+    public func acosh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvacoshf(&results, self, [Int32(count)])
+
+        return results
+    }
+
+    /// Inverse Hyperbolic Tangent
+    public func atanh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvatanhf(&results, self, [Int32(count)])
+
+        return results
+    }
 }
 
-public func sinh(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvsinh(&results, x, [Int32(x.count)])
+extension Array where Element == Double {
+    /// Hyperbolic Sine
+    public func sinh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvsinh(&results, self, [Int32(count)])
 
-    return results
-}
+        return results
+    }
 
-// MARK: Hyperbolic Cosine
+    /// Hyperbolic Cosine
+    public func cosh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvcosh(&results, self, [Int32(count)])
 
-public func cosh(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvcoshf(&results, x, [Int32(x.count)])
+        return results
+    }
 
-    return results
-}
+    /// Hyperbolic Tangent
+    public func tanh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvtanh(&results, self, [Int32(count)])
 
-public func cosh(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvcosh(&results, x, [Int32(x.count)])
+        return results
+    }
 
-    return results
-}
+    /// Inverse Hyperbolic Sine
+    public func asinh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvasinh(&results, self, [Int32(count)])
 
-// MARK: Hyperbolic Tangent
+        return results
+    }
 
-public func tanh(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvtanhf(&results, x, [Int32(x.count)])
+    /// Inverse Hyperbolic Cosine
+    public func acosh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvacosh(&results, self, [Int32(count)])
 
-    return results
-}
+        return results
+    }
 
-public func tanh(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvtanh(&results, x, [Int32(x.count)])
+    /// Inverse Hyperbolic Tangent
+    public func atanh() -> [Element] {
+        var results = [Element](repeating: 0.0, count: count)
+        vvatanh(&results, self, [Int32(count)])
 
-    return results
-}
-
-// MARK: Inverse Hyperbolic Sine
-
-public func asinh(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvasinhf(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func asinh(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvasinh(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-// MARK: Inverse Hyperbolic Cosine
-
-public func acosh(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvacoshf(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func acosh(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvacosh(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-// MARK: Inverse Hyperbolic Tangent
-
-public func atanh(_ x: [Float]) -> [Float] {
-    var results = [Float](repeating: 0.0, count: x.count)
-    vvatanhf(&results, x, [Int32(x.count)])
-
-    return results
-}
-
-public func atanh(_ x: [Double]) -> [Double] {
-    var results = [Double](repeating: 0.0, count: x.count)
-    vvatanh(&results, x, [Int32(x.count)])
-
-    return results
+        return results
+    }
 }
