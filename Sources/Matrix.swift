@@ -22,7 +22,7 @@
 
 import Accelerate
 
-public enum MatrixAxies {
+public enum MatrixAxis {
     case row
     case column
 }
@@ -262,9 +262,9 @@ public func exp(_ x: Matrix<Float>) -> Matrix<Float> {
     return result
 }
 
-public func sum(_ x: Matrix<Double>, axies: MatrixAxies = .column) -> Matrix<Double> {
+public func sum(_ x: Matrix<Double>, axis: MatrixAxis = .column) -> Matrix<Double> {
     
-    switch axies {
+    switch axis {
     case .column:
         var result = Matrix<Double>(rows: 1, columns: x.columns, repeatedValue: 0.0)
         for i in 0..<x.columns {
