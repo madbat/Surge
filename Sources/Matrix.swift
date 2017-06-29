@@ -58,7 +58,6 @@ public struct Matrix<Element> where Element: BinaryFloatingPoint {
             assert(indexIsValidForRow(row, column: column))
             return grid[(row * columns) + column]
         }
-
         set {
             assert(indexIsValidForRow(row, column: column))
             grid[(row * columns) + column] = newValue
@@ -72,7 +71,6 @@ public struct Matrix<Element> where Element: BinaryFloatingPoint {
             let endIndex = row * columns + columns
             return Array(grid[startIndex..<endIndex])
         }
-        
         set {
             assert(row < rows)
             assert(newValue.count == columns)
@@ -91,7 +89,6 @@ public struct Matrix<Element> where Element: BinaryFloatingPoint {
             }
             return result
         }
-        
         set {
             assert(column < columns)
             assert(newValue.count == rows)
@@ -159,7 +156,6 @@ extension Matrix: Equatable {
         return lhs.rows == rhs.rows && lhs.columns == rhs.columns && lhs.grid == rhs.grid
     }
 }
-
 
 extension Matrix where Element == Float {
     public static func add(_ x: Matrix<Element>, _ y: Matrix<Element>) -> Matrix<Element> {
@@ -458,8 +454,8 @@ extension Matrix where Element == Double {
         return .div(lhs, rhs)
     }
 
-    public static func / (lhs: Matrix, rhs: Double) -> Matrix {
-        var result = Matrix<Double>(rows: lhs.rows, columns: lhs.columns, repeatedValue: 0.0)
+    public static func / (lhs: Matrix, rhs: Element) -> Matrix {
+        var result = lhs
         result.grid = lhs.grid / rhs
         return result
     }
