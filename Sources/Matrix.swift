@@ -171,6 +171,15 @@ extension Matrix where Element == Float {
         return results
     }
 
+    public static func sub(_ x: Matrix<Element>, _ y: Matrix<Element>) -> Matrix<Element> {
+        precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with subtraction")
+
+        var results = y.negate()
+        cblas_saxpy(Int32(x.grid.count), 1.0, x.grid, 1, &(results.grid), 1)
+
+        return results
+    }
+
     public static func mul(_ alpha: Element, _ x: Matrix<Element>) -> Matrix<Element> {
         var results = x
         cblas_sscal(Int32(x.grid.count), alpha, &(results.grid), 1)
@@ -206,6 +215,15 @@ extension Matrix where Element == Double {
         precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with addition")
 
         var results = y
+        cblas_daxpy(Int32(x.grid.count), 1.0, x.grid, 1, &(results.grid), 1)
+
+        return results
+    }
+
+    public static func sub(_ x: Matrix<Element>, _ y: Matrix<Element>) -> Matrix<Element> {
+        precondition(x.rows == y.rows && x.columns == y.columns, "Matrix dimensions not compatible with subtraction")
+
+        var results = y.negate()
         cblas_daxpy(Int32(x.grid.count), 1.0, x.grid, 1, &(results.grid), 1)
 
         return results
@@ -301,6 +319,13 @@ extension Matrix where Element == Float {
 
         return results
     }
+
+    public func negate() -> Matrix<Element> {
+        var results = self
+        vDSP_vneg(grid, 1, &(results.grid), 1, vDSP_Length(results.grid.count))
+
+        return results
+    }
 }
 
 extension Matrix where Element == Double {
@@ -362,6 +387,13 @@ extension Matrix where Element == Double {
 
         return results
     }
+
+    public func negate() -> Matrix<Element> {
+        var results = self
+        vDSP_vnegD(grid, 1, &(results.grid), 1, vDSP_Length(results.grid.count))
+
+        return results
+    }
 }
 
 
@@ -372,6 +404,10 @@ postfix operator ′
 extension Matrix where Element == Float {
     public static func + (lhs: Matrix, rhs: Matrix) -> Matrix {
         return .add(lhs, rhs)
+    }
+
+    public static func - (lhs: Matrix, rhs: Matrix) -> Matrix {
+        return .sub(lhs, rhs)
     }
 
     public static func * (lhs: Element, rhs: Matrix) -> Matrix {
@@ -395,6 +431,10 @@ extension Matrix where Element == Float {
     public static postfix func ′ (value: Matrix) -> Matrix {
         return value.transpose()
     }
+
+    public static prefix func - (value: Matrix) -> Matrix {
+        return value.negate()
+    }
 }
 
 extension Matrix where Element == Double {
@@ -402,7 +442,11 @@ extension Matrix where Element == Double {
         return .add(lhs, rhs)
     }
 
-    public static func * (lhs: Double, rhs: Matrix) -> Matrix {
+    public static func - (lhs: Matrix, rhs: Matrix) -> Matrix {
+        return .sub(lhs, rhs)
+    }
+
+    public static func * (lhs: Element, rhs: Matrix) -> Matrix {
         return .mul(lhs, rhs)
     }
 
@@ -422,5 +466,9 @@ extension Matrix where Element == Double {
 
     public static postfix func ′ (value: Matrix) -> Matrix {
         return value.transpose()
+    }
+
+    public static prefix func - (value: Matrix) -> Matrix {
+        return value.negate()
     }
 }
