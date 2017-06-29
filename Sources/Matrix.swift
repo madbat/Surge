@@ -27,9 +27,7 @@ public enum MatrixAxis {
     case column
 }
 
-public struct Matrix<T> where T: FloatingPoint, T: ExpressibleByFloatLiteral {
-    public typealias Element = T
-
+public struct Matrix<Element> where Element: BinaryFloatingPoint {
     fileprivate let rows: Int
     fileprivate let columns: Int
     fileprivate var grid: [Element]
