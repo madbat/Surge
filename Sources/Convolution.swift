@@ -26,9 +26,9 @@ import Accelerate
 // MARK: Convolution
 
 extension Array where Element == Float {
-    // Convolution of a signal [x], with a kernel [k]. The signal must be at least as long as the kernel.
+    /// Convolution of a signal [x], with a kernel [k]. The signal must be at least as long as the kernel.
     public static func conv(_ x: [Element], _ k: [Element]) -> [Element] {
-        precondition(x.count >= k.count, "Input vector [x] must have at least as many elements as the kernel,  [k]")
+        precondition(x.count >= k.count, "Input vector [x] must have at least as many elements as the kernel, [k]")
 
         let resultSize = x.count + k.count - 1
         var result = [Element](repeating: 0, count: resultSize)
@@ -40,8 +40,8 @@ extension Array where Element == Float {
         return result
     }
 
-    // Cross-correlation of a signal [x], with another signal [y]. The signal [y]
-    // is padded so that it is the same length as [x].
+    /// Cross-correlation of a signal [x], with another signal [y]. The signal [y]
+    /// is padded so that it is the same length as [x].
     public static func xcorr(_ x: [Element], _ y: [Element]) -> [Element] {
         precondition(x.count >= y.count, "Input vector [x] must have at least as many elements as [y]")
         var yPadded = y
@@ -59,7 +59,7 @@ extension Array where Element == Float {
         return result
     }
 
-    // Auto-correlation of a signal [x]
+    /// Auto-correlation of a signal [x]
     public func xcorr() -> [Element] {
         return .xcorr(self, self)
     }
@@ -67,9 +67,9 @@ extension Array where Element == Float {
 
 
 extension Array where Element == Double {
-    // Convolution of a signal [x], with a kernel [k]. The signal must be at least as long as the kernel.
+    /// Convolution of a signal [x], with a kernel [k]. The signal must be at least as long as the kernel.
     public static func conv(_ x: [Element], _ k: [Element]) -> [Element] {
-        precondition(x.count >= k.count, "Input vector [x] must have at least as many elements as the kernel,  [k]")
+        precondition(x.count >= k.count, "Input vector [x] must have at least as many elements as the kernel, [k]")
 
         let resultSize = x.count + k.count - 1
         var result = [Element](repeating: 0, count: resultSize)
@@ -81,8 +81,8 @@ extension Array where Element == Double {
         return result
     }
 
-    // Cross-correlation of a signal [x], with another signal [y]. The signal [y]
-    // is padded so that it is the same length as [x].
+    /// Cross-correlation of a signal [x], with another signal [y]. The signal [y]
+    /// is padded so that it is the same length as [x].
     public static func xcorr(_ x: [Element], _ y: [Element]) -> [Element] {
         precondition(x.count >= y.count, "Input vector [x] must have at least as many elements as [y]")
         var yPadded = y
@@ -100,7 +100,7 @@ extension Array where Element == Double {
         return result
     }
 
-    // Auto-correlation of a signal [x]
+    /// Auto-correlation of a signal [x]
     public func xcorr() -> [Element] {
         return .xcorr(self, self)
     }
