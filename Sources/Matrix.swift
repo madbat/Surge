@@ -30,25 +30,27 @@ public enum MatrixAxis {
 public struct Matrix<Element> where Element: BinaryFloatingPoint {
     fileprivate let rows: Int
     fileprivate let columns: Int
-    fileprivate var grid: [Element]
 
-    public init(rows: Int, columns: Int, repeatedValue: Element) {
+    public var dimensions: (rows: Int, columns: Int) {
+        return (rows, columns)
+    }
+
+    private var grid: [Element]
+
+    private init(rows: Int, grid: [Element]) {
         self.rows = rows
-        self.columns = columns
+        self.columns = grid.count / rows
+        self.grid = grid
+    }
 
-        self.grid = [Element](repeating: repeatedValue, count: rows * columns)
+    public init(rows: Int, columns: Int, repeatedValue: Element = 0) {
+        self.init(rows: rows, grid: [Element](repeating: repeatedValue, count: rows * columns))
     }
 
     public init(_ contents: [[Element]]) {
-        let m: Int = contents.count
-        let n: Int = contents[0].count
-        let repeatedValue: Element = 0.0 
-
-        self.init(rows: m, columns: n, repeatedValue: repeatedValue)
-
-        for (i, row) in contents.enumerated() {
-            grid.replaceSubrange(i*n..<i*n+Swift.min(m, row.count), with: row)
-        }
+        rows = contents.count
+        columns = contents[0].count
+        grid = contents.flatMap { $0 }
     }
 
     public subscript(row: Int, column: Int) -> Element {
